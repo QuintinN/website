@@ -1,0 +1,32 @@
+.about__img-wrapper {
+  max-width: 400px;
+  max-height: 350px;
+  margin-bottom: 10px;
+}
+
+.about__img {
+  border-radius: 15px;
+  width: 100%;
+  height: 100%;
+}
+
+.about__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+}
+
+.about__data {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.about__btn{
+  background-color: var(--primary-color);
+}
+
+.about__btn:hover{
+  background-color: var(--primary-color-hover);
+}

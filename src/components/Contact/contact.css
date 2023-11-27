@@ -1,0 +1,13 @@
+.contact-card {
+  background-color: var(--box-bg-color);
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 4px 12px;
+}
+
+.contact-input {
+  border: 2px solid #915eff33 !important;
+  background: transparent;
+}
+
+.contact-button {
+  background-color: #915eff5e !important;
+}
