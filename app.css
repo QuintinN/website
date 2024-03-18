@@ -1,0 +1,90 @@
+/*--------------------------------------------------------------
+# General
+--------------------------------------------------------------*/
+body {
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: top;
+    align-items: center;
+    position: relative;
+    background: transparent;
+    background-color: #0b0e45; /* Dark blue hue */
+    font-weight: 700;
+    /*padding-left: 250px; */
+}
+  
+a {
+    color: #12d640;
+}
+
+a:hover {
+    color: #12d640;
+    text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+}
+  
+header {
+    text-align: left;
+}
+
+header h1 {
+    font-size: 3rem;
+    margin: 0.5rem;
+}
+
+header p {
+    font-size: 1.5rem;
+    color: #4CAF50;
+}
+
+.social-media a {
+    color: #FFFFFF;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+footer {
+    position: absolute;
+    bottom: 10px;
+}
+
+/* Social Icons Styling */
+.social-icons {
+    display: flex;
+    justify-content: left; /* Center the icons horizontally */
+    gap: 20px; /* Add space between icons */
+}
+
+.social-icons a {
+    color: #000; /* Icon color */
+    font-size: 40px; /* Icon size */
+    transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.social-icons a:hover {
+    color: #0077b5; /* LinkedIn blue for hover effect, change as desired */
+}
+
+#ascii-art {
+    width: 800px; /* Adjust the width according to your content's maximum width during animation */
+    overflow-x: hidden; /* Prevent horizontal overflow from being visible */
+}
+
+/* Adjust the navigation styling 
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 160px; /* Change this value to reduce the sidebar width 
+    height: 100%;
+    background-color: #083A44;
+    padding-top: 10px;
+    z-index: 1000;
+}
+*/
