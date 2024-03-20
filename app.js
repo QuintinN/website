@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const originalAsciiLines = asciiArtElement.innerText.split('\n');
     let lineStates = originalAsciiLines.map(() => ({ offset: 0, direction: 1 }));
-    const maxSpaces = 25;
+    const maxSpaces = 45;
     const startDelay = 1;
     let cycleCount = 0;
 
@@ -36,4 +36,65 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     requestAnimationFrame(updateAsciiArtWave);
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const container = document.querySelector('.background-container');
+
+    function createParticle() {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        const startPositionX = Math.random() * window.innerWidth;
+        particle.style.left = `${startPositionX}px`;
+
+        container.appendChild(particle);
+
+        const endPositionX = startPositionX + (Math.random() - 0.5) * 200;
+        const duration = Math.random() * 3 + 2; // Between 2 and 5 seconds
+
+        particle.animate([
+            { transform: 'translateY(0px)', opacity: 1 },
+            { transform: `translateY(${window.innerHeight}px)`, opacity: 0 }
+        ], {
+            duration: duration * 1000,
+            easing: 'linear',
+            fill: 'forwards'
+        });
+
+        setTimeout(() => {
+            container.removeChild(particle);
+        }, duration * 1000);
+    }
+
+    setInterval(createParticle, 10);
+});
+document.addEventListener('DOMContentLoaded', () => {
+    const container = document.querySelector('.background-container');
+
+    function createParticle() {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        const startPositionX = Math.random() * window.innerWidth;
+        particle.style.left = `${startPositionX}px`;
+
+        container.appendChild(particle);
+
+        const endPositionX = startPositionX + (Math.random() - 0.5) * 200;
+        const duration = Math.random() * 3 + 2; // Between 2 and 5 seconds
+
+        particle.animate([
+            { transform: 'translateY(0px)', opacity: 1 },
+            { transform: `translateY(${window.innerHeight}px)`, opacity: 0 }
+        ], {
+            duration: duration * 1000,
+            easing: 'linear',
+            fill: 'forwards'
+        });
+
+        setTimeout(() => {
+            container.removeChild(particle);
+        }, duration * 1000);
+    }
+
+    setInterval(createParticle, 100);
 });
