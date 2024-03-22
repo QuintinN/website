@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Function to create and return a coin element with a fixed size, opacity, and initial position
     function createCoin(src) {
         const size = 35; // Set to 12 pixels as per previous instructions (seems to be a typo)
-        const opacity = Math.random() * (1 - 0.5) + 0.5;
+        const opacity = 1;
         const iframe = document.createElement('iframe');
         iframe.src = src;
         iframe.width = size;

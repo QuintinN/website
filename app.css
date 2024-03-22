@@ -30,6 +30,7 @@ h1, h2, h3, h4, h5, h6 {
 }
   
 header {
+    margin-top: 0;
     text-align: left;
 }
 
@@ -73,7 +74,7 @@ footer {
 }
 
 /* Add this to your app.css */
-.about-title {
+.about-title, .experience-title {
     display: inline-block;
     position: relative; /* This makes the pseudo-element positioning relative to the title */
     color: #12d640;
@@ -81,7 +82,7 @@ footer {
     width: 900px; 
 }
 
-.about-title::after {
+.about-title::after, .experience-title::after {
     content: ''; /* This is necessary for the pseudo-element to display */
     position: absolute;
     top: 110%; /* Aligns the line vertically to the middle of the text */
@@ -171,7 +172,7 @@ footer {
 }
 
 body, html {
-    margin: 0;
+    margin-top: 0;
     padding: 0;
     height: 100%;
     display: flex;
@@ -205,17 +206,3 @@ body, html {
     opacity: 0.2;
 }
 
-#coinContainer .coin {
-    position: fixed;
-    width: 80px; /* Smaller width for the coins */
-    height: 80px; /* Adjust height to maintain aspect ratio */
-    top: 0;
-}
-
-#bitcoinAnimation {
-    left: 0;
-}
-
-#ethereumAnimation {
-    right: 0;
-}
