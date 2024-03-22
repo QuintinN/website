@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-    const container = document.querySelector('body'); // Target the body for appending the coins
+    const container = document.querySelector('.background-container'); // Target the body for appending the coins
 
     // Function to create and return a coin element with a fixed size, opacity, and initial position
     function createCoin(src) {
