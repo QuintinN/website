@@ -119,8 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Function to generate a random number of coins and animate them
-    function generateAndAnimateCoins(src) {
-        const quantity = Math.floor(Math.random() * (10 - 3)) + 3;
+    function generateAndAnimateCoins(src, quantity) {
         for (let i = 0; i < quantity; i++) {
             const coin = createCoin(src);
             container.appendChild(coin);
@@ -132,8 +131,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const bitcoinSrc = "https://giphy.com/embed/NJ2hpQBcgiOz6cbal6";
     const ethereumSrc = "https://giphy.com/embed/WZbiJmZsWiDXDVjZCz";
 
-    // Generate and animate a random number of coins for each type
-    generateAndAnimateCoins(bitcoinSrc); // For Bitcoin
-    generateAndAnimateCoins(ethereumSrc); // For Ethereum
+    // Generate and animate a random number of coins for each type (ensuring even quantity)
+    const totalCoins = 50; // Total number of coins
+    const bitcoinQuantity = Math.floor(totalCoins / 2); // Divide by 2 to ensure even quantity
+    const ethereumQuantity = totalCoins - bitcoinQuantity; // Remaining quantity for Ethereum
+    generateAndAnimateCoins(bitcoinSrc, bitcoinQuantity); // For Bitcoin
+    generateAndAnimateCoins(ethereumSrc, ethereumQuantity); // For Ethereum
 });
-

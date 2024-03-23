@@ -11,8 +11,20 @@ body {
     position: relative;
     background: transparent;
     background-color: #000000; /* Dark blue hue */
-    font-weight: 700;
+    height: 100%; 
+    width: auto; 
     /*padding-left: 250px; */
+}
+
+body, html {
+    min-height: 100vh;
+    margin-top: 0;
+    padding: 0;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #000; /* Ensuring black background for contrast */
 }
   
 a {
@@ -30,8 +42,10 @@ h1, h2, h3, h4, h5, h6 {
 }
   
 header {
-    margin-top: 0;
     text-align: left;
+    top: 0;
+    left: 0;
+    width: 100%;
 }
 
 .social-media a {
@@ -92,7 +106,7 @@ footer {
     transform: translateY(-50%); /* Ensures the line is centered vertically with respect to the text */
 }
 
-.profile-container { 
+.profile-container, .timeline-container { 
     display: flex;
     align-items: flex-start; /* Aligns the items to the top of the container */
     gap: 20px; /* Adjust the gap between the image and the text as needed */
@@ -171,16 +185,6 @@ footer {
     100% { top: 100%; }
 }
 
-body, html {
-    margin-top: 0;
-    padding: 0;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #000; /* Ensuring black background for contrast */
-}
-
 .background-container {
     position: fixed;
     top: 0;
@@ -206,3 +210,109 @@ body, html {
     opacity: 0.2;
 }
 
+.timeline {
+    display: flex;
+    padding: 20px;
+    overflow-x: auto;
+    overflow-y: auto; 
+}
+  
+.event {
+    position: relative;
+    margin-right: auto; /* Space between events */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+  
+  .logo {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #4CAF50;
+    position: relative;
+    z-index: 1; /* Ensure logo is above the line */
+  }
+  
+.logo::after, .logo::before {
+    content: '';
+    position: absolute;
+    background-color: #000;
+}
+  
+.logo::after {
+    top: 100%;
+    left: 50%;
+    width: 2px;
+    height: 20px; /* Distance to the card, adjust as needed */
+    transform: translateX(-50%);
+    background-color: #fff; /* Change the color of the line */
+}
+  
+.description-card {
+    width: 200px; /* Fixed width for the cards */
+    padding: 5px;
+    margin-top: 20px; /* Adjust based on vertical line height */
+    border: 1px solid #fff;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    text-align: center;
+    color: #000;
+}
+
+.description-card .company {
+    margin-top: 5px; 
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.description-card .position {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.description-card .dates {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+.description-card .description ul {
+    font-size: 14px;
+    color: #444;
+    list-style-type: disc; /* Bullet point style */
+    padding-left: 20px; /* Indentation for bullet points */
+}
+
+.description-card .description ul li {
+    margin-bottom: 5px;
+}
+  
+.description-card h3, .description-card p {
+    color: #000; /* Ensures text color is black for these elements */
+}
+  
+.connector {
+    display: inline-block;
+    height: 2px;
+    background-color: #fff;
+    position: absolute;
+    top: 15px; /* Adjust so the line is centered vertically with the logo */
+    left: 50%;
+    right: -180px; /* Adjust based on your spacing between events */
+}
+
+.event:nth-child(3) .description-card {
+    width: 200px; /* Adjust width as needed */
+    height: auto; /* Adjust height as needed, or use a specific value */
+    /* You can also adjust padding or margins here if needed */
+}
+  
+.event, .logo, .description-card {
+    position: relative; /* Ensures proper positioning within the timeline */
+    /* Adjust width, margin, and padding as needed */
+}
