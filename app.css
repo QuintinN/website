@@ -234,6 +234,18 @@ footer {
     flex-shrink: 5; 
 }
 
+.t1cg-pic {
+    margin-right: 20px; 
+    margin-bottom: 80px; 
+    max-width: 110px; /* Adjusts the maximum width to 100px */
+    max-height: 110px; /* Adjusts the maximum height to 100px */
+    width: auto; /* Ensures the width adjusts to maintain the aspect ratio */
+    height: auto;
+    align-items: center;    
+    flex-shrink: 5; 
+    border-radius: 10%; 
+}
+
 .aws-pic {
     flex-shrink: 10; /* Prevent the image from shrinking */
     max-width: 120px; /* Adjusts the maximum width to 100px */
@@ -248,6 +260,17 @@ footer {
     padding: 5px; /* Adds space between the picture and the circular background */
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Adds a subtle shadow around the image */
     margin-bottom: 80px; 
+}
+
+.aapl-pic {
+    margin-right: 2px; 
+    margin-bottom: 80px; 
+    max-width: 128px; /* Adjusts the maximum width to 100px */
+    max-height: 128px; /* Adjusts the maximum height to 100px */
+    width: auto; /* Ensures the width adjusts to maintain the aspect ratio */
+    height: auto;
+    align-items: center;    
+    flex-shrink: 5; 
 }
 
 .description-card {
