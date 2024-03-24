@@ -224,14 +224,14 @@ footer {
 }
 
 .umd-pic {
-    margin-right: 10px; 
+    margin-right: 0px; 
     margin-bottom: 80px; 
-    max-width: 100px; /* Adjusts the maximum width to 100px */
-    max-height: 100px; /* Adjusts the maximum height to 100px */
+    max-width: 130px; /* Adjusts the maximum width to 100px */
+    max-height: 130px; /* Adjusts the maximum height to 100px */
     width: auto; /* Ensures the width adjusts to maintain the aspect ratio */
     height: auto;
     align-items: center;    
-    flex-shrink: 10; 
+    flex-shrink: 5; 
 }
 
 .aws-pic {
