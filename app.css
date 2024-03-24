@@ -10,8 +10,7 @@ body {
     align-items: center;
     position: relative;
     background: transparent;
-    background-color: #000000; /* Dark blue hue */
-    height: 100%; 
+    height: auto; 
     width: auto; 
     /*padding-left: 250px; */
 }
@@ -24,7 +23,9 @@ body, html {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #000; /* Ensuring black background for contrast */
+    background-color: black; /* Ensuring black background for contrast */
+    border-right: dashed red; 
+    border-left: dashed red; 
 }
   
 a {
@@ -77,14 +78,11 @@ footer {
 }
 
 #ascii-art {
-    width: 900px; /* Adjust the width according to your content's maximum width during animation */
-    overflow-x: hidden; /* Prevent horizontal overflow from being visible */
     color: #12d640;
 }
 
 #about {
-    max-width: 900px; 
-    margin: auto; 
+    width: 930px; 
 }
 
 /* Add this to your app.css */
@@ -93,7 +91,7 @@ footer {
     position: relative; /* This makes the pseudo-element positioning relative to the title */
     color: #12d640;
     font-size: 2rem;
-    width: 900px; 
+    width: 100%; 
 }
 
 .about-title::after, .experience-title::after {
@@ -101,12 +99,12 @@ footer {
     position: absolute;
     top: 110%; /* Aligns the line vertically to the middle of the text */
     left: 0%; /* Starts the line right after the text */
-    width: 900px; /* Adjusts the line length; modify as needed */
+    width: 100%; /* Adjusts the line length; modify as needed */
     border-bottom: 4px solid #12d640; /* Customize the line color and thickness */
     transform: translateY(-50%); /* Ensures the line is centered vertically with respect to the text */
 }
 
-.profile-container, .timeline-container { 
+.profile-container { 
     display: flex;
     align-items: flex-start; /* Aligns the items to the top of the container */
     gap: 20px; /* Adjust the gap between the image and the text as needed */
@@ -195,13 +193,6 @@ footer {
     z-index: -1; /* Behind the text */
 }
 
-.header-text {
-    position: relative;
-    color: #fff;
-    z-index: 2; /* Ensures the text is above the particles */
-    margin-top: -100px; /* Adjust based on your layout needs */
-}
-
 .particle {
     position: absolute;
     width: 4px;
@@ -210,109 +201,57 @@ footer {
     opacity: 0.2;
 }
 
-.timeline {
-    display: flex;
-    padding: 20px;
-    overflow-x: auto;
-    overflow-y: auto; 
+.experience-pic {
+    max-width: 100px; /* Adjusts the maximum width to 100px */
+    max-height: 100px; /* Adjusts the maximum height to 100px */
+    width: auto; /* Ensures the width adjusts to maintain the aspect ratio */
+    height: auto; /* Ensures the height adjusts to maintain the aspect ratio */
 }
-  
+
 .event {
-    position: relative;
-    margin-right: auto; /* Space between events */
+    display: flex; /* Use Flexbox to layout children side by side */
+    align-items: center; /* Align items vertically in the center */
+    justify-content: center; /* Center the items horizontally */
+    margin-bottom: 30px; 
+    width: 95%; 
+    padding-left: 20px; 
+}
+
+.timeline .event {
+    display: flex; 
+    align-items: flex-start; 
+    gap: 20px; 
+}
+
+.umd-pic {
+    margin-right: 10px; 
+    margin-bottom: 80px; 
+    max-width: 100px; /* Adjusts the maximum width to 100px */
+    max-height: 100px; /* Adjusts the maximum height to 100px */
+    width: auto; /* Ensures the width adjusts to maintain the aspect ratio */
+    height: auto;
+    align-items: center;    
+    flex-shrink: 10; 
+}
+
+.aws-pic {
+    flex-shrink: 10; /* Prevent the image from shrinking */
+    max-width: 100px; /* Adjusts the maximum width to 100px */
+    max-height: 100px; /* Adjusts the maximum height to 100px */
+    width: auto; /* Ensures the width adjusts to maintain the aspect ratio */
+    height: auto; /* Ensures the height adjusts to maintain the aspect ratio */
+    border-radius: 0%; /* Makes the background circle */
+    background: white; /* Sets the background color to white */
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
+    padding: 5px; /* Adds space between the picture and the circular background */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Adds a subtle shadow around the image */
+    margin-bottom: 80px; 
 }
-  
-  .logo {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background-color: #4CAF50;
-    position: relative;
-    z-index: 1; /* Ensure logo is above the line */
-  }
-  
-.logo::after, .logo::before {
-    content: '';
-    position: absolute;
-    background-color: #000;
-}
-  
-.logo::after {
-    top: 100%;
-    left: 50%;
-    width: 2px;
-    height: 20px; /* Distance to the card, adjust as needed */
-    transform: translateX(-50%);
-    background-color: #fff; /* Change the color of the line */
-}
-  
+
 .description-card {
-    width: 200px; /* Fixed width for the cards */
-    padding: 5px;
-    margin-top: 20px; /* Adjust based on vertical line height */
-    border: 1px solid #fff;
-    border-radius: 5px;
-    background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    text-align: center;
-    color: #000;
-}
-
-.description-card .company {
-    margin-top: 5px; 
-    font-size: 18px;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 5px;
-}
-
-.description-card .position {
-    font-size: 16px;
-    color: #555;
-    margin-bottom: 5px;
-}
-
-.description-card .dates {
-    font-size: 14px;
-    color: #777;
-    margin-bottom: 10px;
-}
-
-.description-card .description ul {
-    font-size: 14px;
-    color: #444;
-    list-style-type: disc; /* Bullet point style */
-    padding-left: 20px; /* Indentation for bullet points */
-}
-
-.description-card .description ul li {
-    margin-bottom: 5px;
-}
-  
-.description-card h3, .description-card p {
-    color: #000; /* Ensures text color is black for these elements */
-}
-  
-.connector {
-    display: inline-block;
-    height: 2px;
-    background-color: #fff;
-    position: absolute;
-    top: 15px; /* Adjust so the line is centered vertically with the logo */
-    left: 50%;
-    right: -180px; /* Adjust based on your spacing between events */
-}
-
-.event:nth-child(3) .description-card {
-    width: 200px; /* Adjust width as needed */
-    height: auto; /* Adjust height as needed, or use a specific value */
-    /* You can also adjust padding or margins here if needed */
-}
-  
-.event, .logo, .description-card {
-    position: relative; /* Ensures proper positioning within the timeline */
-    /* Adjust width, margin, and padding as needed */
+    flex-grow: 1; /* Allow the description card to fill the remaining space */
+    max-width: 800px; 
+    text-align: left; 
 }

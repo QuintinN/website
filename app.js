@@ -7,12 +7,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const originalAsciiLines = asciiArtElement.innerText.split('\n');
     let lineStates = originalAsciiLines.map(() => ({ offset: 0, direction: 1 }));
-    const maxSpaces = 45;
+    const maxSpaces = 48; 
     const startDelay = 1;
     let cycleCount = 0;
 
     let frameCount = 0; // New variable to count frames
-    const frameRate = 20; // Update the wave every 10 frames to slow down the animation
+    const frameRate = 10; // Update the wave every 10 frames to slow down the animation
 
     function updateAsciiArtWave() {
         frameCount++; // Increment frame count
@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Function to create and return a coin element with a fixed size, opacity, and initial position
     function createCoin(src) {
-        const size = 35; // Set to 12 pixels as per previous instructions (seems to be a typo)
+        const size = 18; // Set to 12 pixels as per previous instructions (seems to be a typo)
         const opacity = 1;
         const iframe = document.createElement('iframe');
         iframe.src = src;

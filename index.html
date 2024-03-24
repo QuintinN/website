@@ -7,12 +7,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <title>Quintin Nguyen Portfolio</title>
 </head>
+<div class="background-container"></div> 
 <body>
-    <!-- Background Container for Particles -->
-    <div class="background-container"></div> 
-
     <!-- Header Section -->
-    <header>
+    <header id="head">
         <!-- ASCII Art -->
         <pre id="ascii-art">
  .d88888b.           d8b          888    d8b               888b    888 
@@ -40,14 +38,15 @@ Y88b.Y8b88P Y88b 888 888 888  888 Y88b.  888 888  888      888   Y8888
     <section id="about">
         <h2 class="about-title">About</h2>
         <div class="profile-container">
-            <img src="pics/pp.jpeg" alt="Profile Picture" class="profile-pic">
-            <div class="text-container"> <!-- New container for text and list -->
+       <img src="pics/pp.jpeg" alt="profile pic" class="profile-pic">
+            <div class="text-container"> 
                 <p>Here you can write a bit about yourself, your interests, background, or anything you wish to share with your visitors.</p>
                 <ul class="info-grid">
-                    <li><i class="fas fa-chevron-right" style="color: #12d640;"></i> Birthday: April, 2000</li>
-                    <li><i class="fas fa-chevron-right" style="color: #12d640;"></i> City: D.C. Washington</li>
-                    <li><i class="fas fa-chevron-right" style="color: #12d640;"></i> Email: quintintnguyen@gmail.com</li>
-                    <li><i class="fas fa-chevron-right" style="color: #12d640;"></i> Education: B.S. Computer Science from the University of Maryland, College Park</li>
+                    <li><i class="fas fa-chevron-right" style="color: #12d640;"></i>Nationality: 🇻🇳/🇨🇳</li>
+                    <li><i class="fas fa-chevron-right" style="color: #12d640;"></i>City: D.C. Washington</li>
+                    <li><i class="fas fa-chevron-right" style="color: #12d640;"></i>Email: quintintnguyen@gmail.com</li>
+                    <li><i class="fas fa-chevron-right" style="color: #12d640;"></i>Education: B.S. Computer Science from the University of Maryland, College Park</li>
+                    <li><i class="fas fa-chevron-right" style="color: #12d640;"></i>Birthday: April 2000</li>
                 </ul>
             </div>
         </div>
@@ -57,110 +56,56 @@ Y88b.Y8b88P Y88b 888 888 888  888 Y88b.  888 888  888      888   Y8888
         <h2 class="experience-title">Experience</h2>
         <div class="timeline">
             <div class="event">
-                <div class="logo"></div>
-                <span class="connector"></span> <!-- Horizontal connector -->
+                <img src="pics/aws.png" alt="aws profile pic" class="aws-pic">
                 <div class="description-card">
                     <div class="company">Amazon Web Services</div>
                     <div class="position">Software Development Engineer</div>
                     <div class="dates">July 2022 - Current</div>
                     <div class="description">
                         <ul>
-                            <li>Description bullet point 1</li>
-                            <li>Description bullet point 2</li>
-                            <li>Description bullet point 3</li>
-                            <!-- Add more bullet points as needed -->
+                            <li>Participated in the design and implementation of MinionFarm, a capacity system used to provision EC2 instances for on-demand customers.</li>
+                            <li>Developed a dynamic resource scaling solution that reduces provisioning times by 80%, reduces operational costs by 20%, and achieves 99.9% service.</li>
+                            <li>Reduced operating costs by margins of 17% thereby saving ~$1Mil through more efficient EC2 fleet configuration, warm pool, and deployment.</li>
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="event">
-                <div class="logo"></div> <!-- No connector for the last event -->
-                <span class="connector"></span>
+                <img src="pics/aws.png" alt="aws profile pic" class="aws-pic">
                 <div class="description-card">
-                    <div class="company">Company Name</div>
-                    <div class="position">Position Title</div>
-                    <div class="dates">Start Date - End Date</div>
+                    <div class="company">Amazon Web Services</div>
+                    <div class="position">Software Development Engineer Intern</div>
+                    <div class="dates">May 2021 - August 2021</div>
                     <div class="description">
                         <ul>
-                            <li>Description bullet point 1</li>
-                            <li>Description bullet point 2</li>
-                            <li>Description bullet point 3</li>
-                            <!-- Add more bullet points as needed -->
+                            <li>Automated a query analysis process using Athena, Lambda, and S3 bucket services to decrease on-call analysis by at least 50%.
+                            </li>
+                            <li>Developed a full-stack feature using Google Web Tools and Athena API for query analysis with SQL.
+                            </li>
+                            <li>Implemented UI-Handlers for monitoring capacity systems. Fixed and adjusted metrics on the monitoring system in Ruby. 
+                            </li>
                         </ul>
                     </div>
                 </div>
                 
             </div>
             <div class="event">
-                <div class="logo"></div> <!-- No connector for the last event -->
+                <img src="pics/umd.png" alt="umd profile pic" class="umd-pic">
                 <div class="description-card">
-                    <div class="company">Company Name</div>
-                    <div class="position">Position Title</div>
-                    <div class="dates">Start Date - End Date</div>
+                    <div class="company">University of Maryland Department of Computer Science</div>
+                    <div class="position">Teaching Assistant</div>
+                    <div class="dates">August 2020 - January 2021</div>
                     <div class="description">
                         <ul>
-                            <li>Description bullet point 1</li>
-                            <li>Description bullet point 2</li>
-                            <li>Description bullet point 3</li>
-                            <!-- Add more bullet points as needed -->
+                            <li>Implemented a static code analysis module to evaluate code quality, adherence to coding standards, and common coding pitfalls.
+                            </li>
+                            <li>Improved students' problem-solving skills by providing guidance and feedback on their object-oriented solutions.
+                            </li>
+                            <li>Led TA sessions 6 hours a week, assisted in weekly labs, and graded assignments for a class of 115.
+                            </li>
                         </ul>
                     </div>
                 </div>
-                
-            </div>
-        </div>
-        <div class="timeline">
-            <div class="event">
-                <div class="logo"></div>
-                <span class="connector"></span> <!-- Horizontal connector -->
-                <div class="description-card">
-                    <div class="company">Company Name</div>
-                    <div class="position">Position Title</div>
-                    <div class="dates">Start Date - End Date</div>
-                    <div class="description">
-                        <ul>
-                            <li>Description bullet point 1</li>
-                            <li>Description bullet point 2</li>
-                            <li>Description bullet point 3</li>
-                            <!-- Add more bullet points as needed -->
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="event">
-                <div class="logo"></div> <!-- No connector for the last event -->
-                <span class="connector"></span>
-                <div class="description-card">
-                    <div class="company">Company Name</div>
-                    <div class="position">Position Title</div>
-                    <div class="dates">Start Date - End Date</div>
-                    <div class="description">
-                        <ul>
-                            <li>Description bullet point 1</li>
-                            <li>Description bullet point 2</li>
-                            <li>Description bullet point 3</li>
-                            <!-- Add more bullet points as needed -->
-                        </ul>
-                    </div>
-                </div>
-                
-            </div>
-            <div class="event">
-                <div class="logo"></div> <!-- No connector for the last event -->
-                <div class="description-card">
-                    <div class="company">Company Name</div>
-                    <div class="position">Position Title</div>
-                    <div class="dates">Start Date - End Date</div>
-                    <div class="description">
-                        <ul>
-                            <li>Description bullet point 1</li>
-                            <li>Description bullet point 2</li>
-                            <li>Description bullet point 3</li>
-                            <!-- Add more bullet points as needed -->
-                        </ul>
-                    </div>
-                </div>
-                
             </div>
         </div>
     </section>
