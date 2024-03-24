@@ -236,11 +236,11 @@ footer {
 
 .aws-pic {
     flex-shrink: 10; /* Prevent the image from shrinking */
-    max-width: 100px; /* Adjusts the maximum width to 100px */
+    max-width: 120px; /* Adjusts the maximum width to 100px */
     max-height: 100px; /* Adjusts the maximum height to 100px */
     width: auto; /* Ensures the width adjusts to maintain the aspect ratio */
     height: auto; /* Ensures the height adjusts to maintain the aspect ratio */
-    border-radius: 0%; /* Makes the background circle */
+    border-radius: 5%; /* Makes the background circle */
     background: white; /* Sets the background color to white */
     display: flex;
     justify-content: center;
@@ -254,4 +254,37 @@ footer {
     flex-grow: 1; /* Allow the description card to fill the remaining space */
     max-width: 800px; 
     text-align: left; 
+}
+
+.description-card .company {
+    font-size: 1.2em; /* Larger font size for emphasis */
+    font-weight: bold; /* Make it bold */
+    color: #FBFAF5; /* Dark color for contrast */
+    margin-bottom: 8px; /* Space below the company name */
+}
+
+.description-card .position {
+    font-size: 1.1em; /* Slightly larger than normal text */
+    color: #FBFAF5;  /* Subtle color */
+    margin-bottom: 5px; /* Space below the position */
+}
+
+.description-card .dates {
+    font-size: 0.9em; /* Smaller font size */
+    color: #FBFAF5; /* More subtle color */
+    margin-bottom: 10px; /* Space before the description starts */
+}
+
+.description-card .description {
+    font-size: 0.9em; /* Readable font size */
+    color: #FBFAF5; /* Slightly darker than dates for readability */
+    line-height: 1.5; /* Improve readability */
+}
+
+.description-card ul {
+    padding-left: 20px; /* Indent for list items */
+}
+
+.description-card ul li {
+    margin-bottom: 5px; /* Space between list items */
 }
