@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const originalAsciiLines = asciiArtElement.innerText.split('\n');
     let lineStates = originalAsciiLines.map(() => ({ offset: 0, direction: 1 }));
-    const maxSpaces = 48; 
+    const maxSpaces = 53; 
     const startDelay = 1;
     let cycleCount = 0;
 
@@ -137,4 +137,44 @@ document.addEventListener('DOMContentLoaded', () => {
     const ethereumQuantity = totalCoins - bitcoinQuantity; // Remaining quantity for Ethereum
     generateAndAnimateCoins(bitcoinSrc, bitcoinQuantity); // For Bitcoin
     generateAndAnimateCoins(ethereumSrc, ethereumQuantity); // For Ethereum
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Your existing code...
+
+    // Select all the `.event` elements from the timeline
+    const events = document.querySelectorAll('.timeline .event');
+
+    // Define the slide-in animation
+    const slideInOptions = {
+        root: null, // Observing relative to the viewport
+        threshold: 0.1, // Trigger when 10% of the element is in the viewport
+        rootMargin: "0px"
+    };
+
+    // IntersectionObserver callback function
+    const slideInOnScroll = (entries, observer) => {
+        entries.forEach(entry => {
+            // Remove the animation class initially to reset the state
+            entry.target.classList.remove('slide-in');
+
+            // Check if the element is intersecting
+            if (!entry.isIntersecting) {
+                return; // Skip if the element is not intersecting
+            }
+
+            // Re-add the class to trigger the animation
+            setTimeout(() => {
+                entry.target.classList.add('slide-in');
+            }, 50); // Short delay to ensure class removal and addition are distinguishable
+        });
+    };
+
+    // Create the Intersection Observer
+    const observer = new IntersectionObserver(slideInOnScroll, slideInOptions);
+
+    // Observe each `.event`
+    events.forEach(event => {
+        observer.observe(event);
+    });
 });
