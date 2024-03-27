@@ -178,3 +178,45 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(event);
     });
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Create the button
+    var backToTopButton = document.createElement('a');
+    backToTopButton.innerHTML = '&#x261D;'; // Unicode for ☝️ emoji
+    backToTopButton.href = "#";
+    backToTopButton.id = 'back-to-top';
+    
+    // Style the button
+    backToTopButton.style.position = 'fixed';
+    backToTopButton.style.bottom = '20px';
+    backToTopButton.style.right = '20px';
+    backToTopButton.style.fontSize = '24px';
+    backToTopButton.style.zIndex = '99';
+    backToTopButton.style.border = 'none';
+    backToTopButton.style.outline = 'none';
+    backToTopButton.style.backgroundColor = 'transparent';
+    backToTopButton.style.color = 'black';
+    backToTopButton.style.cursor = 'pointer';
+    backToTopButton.style.padding = '15px';
+    backToTopButton.style.borderRadius = '4px';
+    backToTopButton.style.textDecoration = 'none';
+    backToTopButton.style.display = 'none'; // Hide by default
+    
+    // Append the button to the body
+    document.body.appendChild(backToTopButton);
+    
+    // Show the button when the user scrolls down
+    window.onscroll = function() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            backToTopButton.style.display = "block";
+        } else {
+            backToTopButton.style.display = "none";
+        }
+    };
+    
+    // Scroll smoothly to the top when the button is clicked
+    backToTopButton.addEventListener('click', function(e) {
+        e.preventDefault(); // Prevent the default anchor behavior
+        window.scrollTo({top: 0, behavior: 'smooth'});
+    });
+});

@@ -77,6 +77,23 @@ footer {
     color: #0077b5; /* LinkedIn blue for hover effect, change as desired */
 }
 
+.resume-button {
+    display: inline-block;
+    padding: 2px 4px; /* Minimized padding */
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1px; /* Minimized font size */
+    border-radius: 5px; /* Small rounded corners */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.resume-button:hover {
+    background-color: #45a049; /* Darker shade of green */
+}
+
 #ascii-art {
     color: #12d640;
 }
@@ -85,25 +102,29 @@ footer {
     width: 970px; 
 }
 
-/* Add this to your app.css */
-.about-title, .experience-title {
+.about-title, 
+.experience-title, 
+.skills-title {
     display: inline-block;
-    position: relative; /* This makes the pseudo-element positioning relative to the title */
+    position: relative; /* Keeps the pseudo-element within the title's bounds */
     color: #12d640;
     font-size: 2rem;
-    width: 100%; 
-    margin-top: -1px; 
+    width: 100%;
+    margin-top: 20px;
 }
 
-.about-title::after, .experience-title::after {
-    content: ''; /* This is necessary for the pseudo-element to display */
+.about-title::after, 
+.experience-title::after,
+.skills-title::after {
+    content: '';
     position: absolute;
-    top: 110%; /* Aligns the line vertically to the middle of the text */
-    left: 0%; /* Starts the line right after the text */
-    width: 100%; /* Adjusts the line length; modify as needed */
-    border-bottom: 4px solid #12d640; /* Customize the line color and thickness */
-    transform: translateY(-50%); /* Ensures the line is centered vertically with respect to the text */
+    top: 100%; /* Places the line directly below the text */
+    left: 0;
+    width: 100%; /* Line extends full width of the text */
+    border-bottom: 4px solid #12d640; /* Defines the line's appearance */
+    margin-top: 2px; /* Adjusts the gap between the text and the line */
 }
+
 
 .profile-container { 
     display: flex;
@@ -154,7 +175,7 @@ footer {
     width: 250px; 
     height: 500px; 
     z-index: 2; 
-    margin-left: 28px; 
+    margin-left: 680px; 
     margin-top: -10px; 
 }
 
@@ -162,7 +183,8 @@ footer {
     height: 490px; 
     z-index: 1;  
     margin-top: -5px; 
-    border-radius: 30%; 
+    border-radius: 30%;
+    margin-right: 15px; 
 }
 
 .rain-animation-container {
@@ -328,3 +350,100 @@ footer {
     margin-bottom: 5px; /* Space between list items */
 }
 
+#back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 24px;
+    z-index: 99;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: black;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+#back-to-top:hover {
+    color: #555;
+}
+
+
+h2 {
+    width: 100%;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.skills-layout {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Adjust space between the two grids */
+    flex-wrap: wrap; /* Ensures responsiveness */
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Keeps existing grid layout */
+    gap: 20px;
+    margin-bottom: 20px; /* Adds space below each grid */
+}
+
+.skill-icon {
+    width: 48px; /* Adjust as needed */
+    height: 48px; /* Adjust as needed */
+}
+
+.skill {
+    text-align: center; /* Center-aligns the skill text below icons */
+}
+
+
+.skill {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.skill-icon {
+    width: 64px; /* Slightly larger icons */
+    height: 64px; /* Maintain aspect ratio */
+    margin-bottom: 8px;
+}
+
+span {
+    font-size: 14px; /* Adjust font size as needed */
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Creates a 3-column layout */
+    gap: 20px;
+    padding: 20px;
+    justify-content: center;
+}
+
+.skill {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.skill-icon {
+    width: 60px; /* Adjusted for better visibility */
+    height: 60px; /* Keep square aspect ratio */
+    margin-bottom: 10px;
+}
+
+span {
+    font-size: 14px;
+    color: #333;
+}
