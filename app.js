@@ -9,10 +9,10 @@ document.addEventListener('DOMContentLoaded', () => {
     let lineStates = originalAsciiLines.map(() => ({ offset: 0, direction: 1 }));
     const maxSpaces = 53; 
     const startDelay = 1;
-    let cycleCount = 0;
+    let cycleCount = 0.5;
 
     let frameCount = 0; // New variable to count frames
-    const frameRate = 10; // Update the wave every 10 frames to slow down the animation
+    const frameRate = 0.75; // Update the wave more frequently for a smoother animation
 
     function updateAsciiArtWave() {
         frameCount++; // Increment frame count
@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const updatedAsciiLines = originalAsciiLines.map((line, index) => {
                 if (cycleCount >= startDelay * index) {
                     const state = lineStates[index];
+                    // Modify offset increment here for smoother transition if needed
                     state.offset += state.direction;
                     if (state.offset === maxSpaces || state.offset === 0) {
                         state.direction *= -1;
@@ -31,12 +32,11 @@ document.addEventListener('DOMContentLoaded', () => {
             asciiArtElement.innerText = updatedAsciiLines;
             cycleCount++;
         }
-
         requestAnimationFrame(updateAsciiArtWave);
     }
-
     requestAnimationFrame(updateAsciiArtWave);
 });
+
 
 document.addEventListener('DOMContentLoaded', () => {
     const container = document.querySelector('.background-container');
@@ -139,84 +139,78 @@ document.addEventListener('DOMContentLoaded', () => {
     generateAndAnimateCoins(ethereumSrc, ethereumQuantity); // For Ethereum
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-    // Your existing code...
+document.addEventListener('DOMContentLoaded', function() {
+    const upArrow = document.getElementById('back-to-top');
+    const downArrow = document.getElementById('scroll-to-bottom');
+    const sections = document.querySelectorAll('section');
+    upArrow.innerHTML = '<i class="fa-solid fa-arrow-up"></i>';
+    downArrow.innerHTML = '<i class="fa-solid fa-arrow-down"></i>';
 
-    // Select all the `.event` elements from the timeline
-    const events = document.querySelectorAll('.timeline .event');
+    function toggleArrowVisibility() {
+        const { scrollTop, clientHeight } = document.documentElement;
+        upArrow.style.display = scrollTop > 20 ? "block" : "none";
+        downArrow.style.display = scrollTop + clientHeight < document.documentElement.scrollHeight ? "block" : "none";
+    }
 
-    // Define the slide-in animation
-    const slideInOptions = {
-        root: null, // Observing relative to the viewport
-        threshold: 0.1, // Trigger when 10% of the element is in the viewport
-        rootMargin: "0px"
-    };
+    window.addEventListener('scroll', toggleArrowVisibility);
 
-    // IntersectionObserver callback function
-    const slideInOnScroll = (entries, observer) => {
-        entries.forEach(entry => {
-            // Remove the animation class initially to reset the state
-            entry.target.classList.remove('slide-in');
+    // Adjusted function for better handling of section heights
+    upArrow.addEventListener('click', function(e) {
+        e.preventDefault();
+        const currentScroll = window.pageYOffset;
+        let targetSection = null;
+        let aboutSectionFound = false;
 
-            // Check if the element is intersecting
-            if (!entry.isIntersecting) {
-                return; // Skip if the element is not intersecting
+        // Reverse iteration to find the target section above the current viewport.
+        for (let i = sections.length - 1; i >= 0; i--) {
+            if (sections[i].id === 'about' && sections[i].offsetTop < currentScroll) {
+                aboutSectionFound = true;
             }
+            if (sections[i].offsetTop < currentScroll - 1) { // Adding -1 to ensure we move up even from the start of a section.
+                targetSection = sections[i];
+                break;
+            }
+        }
 
-            // Re-add the class to trigger the animation
-            setTimeout(() => {
-                entry.target.classList.add('slide-in');
-            }, 50); // Short delay to ensure class removal and addition are distinguishable
-        });
-    };
-
-    // Create the Intersection Observer
-    const observer = new IntersectionObserver(slideInOnScroll, slideInOptions);
-
-    // Observe each `.event`
-    events.forEach(event => {
-        observer.observe(event);
+        if (aboutSectionFound) {
+            // If we have passed the "About" section, scroll to the top.
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else if (targetSection) {
+            // If another section is found above the current position, scroll to it.
+            window.scrollTo({ top: targetSection.offsetTop, behavior: 'smooth' });
+        }
     });
+
+    downArrow.addEventListener('click', function(e) {
+        e.preventDefault();
+        const currentScroll = window.pageYOffset;
+        let targetSection = null;
+
+        Array.from(sections).some(section => {
+            if (section.offsetTop > currentScroll + window.innerHeight / 2) {
+                targetSection = section;
+                return true; // Break the loop
+            }
+        });
+
+        if (targetSection) {
+            window.scrollTo({ top: targetSection.offsetTop, behavior: 'smooth' });
+        }
+    });
+
+    toggleArrowVisibility();
 });
+
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Create the button
-    var backToTopButton = document.createElement('a');
-    backToTopButton.innerHTML = '&#x261D;'; // Unicode for ☝️ emoji
-    backToTopButton.href = "#";
-    backToTopButton.id = 'back-to-top';
-    
-    // Style the button
-    backToTopButton.style.position = 'fixed';
-    backToTopButton.style.bottom = '20px';
-    backToTopButton.style.right = '20px';
-    backToTopButton.style.fontSize = '24px';
-    backToTopButton.style.zIndex = '99';
-    backToTopButton.style.border = 'none';
-    backToTopButton.style.outline = 'none';
-    backToTopButton.style.backgroundColor = 'transparent';
-    backToTopButton.style.color = 'black';
-    backToTopButton.style.cursor = 'pointer';
-    backToTopButton.style.padding = '15px';
-    backToTopButton.style.borderRadius = '4px';
-    backToTopButton.style.textDecoration = 'none';
-    backToTopButton.style.display = 'none'; // Hide by default
-    
-    // Append the button to the body
-    document.body.appendChild(backToTopButton);
-    
-    // Show the button when the user scrolls down
-    window.onscroll = function() {
-        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-            backToTopButton.style.display = "block";
-        } else {
-            backToTopButton.style.display = "none";
-        }
-    };
-    
-    // Scroll smoothly to the top when the button is clicked
-    backToTopButton.addEventListener('click', function(e) {
-        e.preventDefault(); // Prevent the default anchor behavior
-        window.scrollTo({top: 0, behavior: 'smooth'});
+    document.querySelectorAll('.description ul li').forEach(function(li) {
+        // Create the icon element
+        const icon = document.createElement('i');
+        icon.className = 'fas fa-chevron-right';
+        icon.style.color = '#12d640';
+        icon.style.marginRight = '8px'; // Adds spacing between the icon and text
+
+        // Insert the icon before the list item's content
+        li.prepend(icon);
     });
-});
+}); 
