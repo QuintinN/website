@@ -214,3 +214,49 @@ document.addEventListener('DOMContentLoaded', function() {
         li.prepend(icon);
     });
 }); 
+
+document.addEventListener('DOMContentLoaded', function() {
+    const photoStack = document.querySelector('.photo-stack');
+    photoStack.addEventListener('click', function() {
+        const photos = Array.from(this.children); // Convert HTMLCollection to Array
+        const frontPhoto = photos.find(photo => parseInt(photo.style.zIndex, 10) === photos.length || isNaN(parseInt(photo.style.zIndex, 10)));
+        const nextIndex = photos.indexOf(frontPhoto) + 1;
+
+        photos.forEach((photo, index) => {
+            if (index === nextIndex % photos.length) {
+                photo.style.zIndex = photos.length; // Bring the next photo to the front
+            } else {
+                const currentZIndex = parseInt(photo.style.zIndex, 10);
+                photo.style.zIndex = isNaN(currentZIndex) ? 1 : currentZIndex - 1; // Move other photos one level down
+            }
+        });
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.project-card').forEach(function(card) {
+        const photos = card.querySelectorAll('.photo');
+        const counterContainer = card.querySelector('.photo-stack-counter');
+        photos.forEach((photo, index) => {
+            const counterBox = document.createElement('div');
+            counterBox.textContent = index + 1;
+            counterContainer.appendChild(counterBox);
+
+            // Set first counter box as active initially
+            if(index === 0) {
+                photo.style.display = 'block';
+                counterBox.classList.add('active'); // Mark as active
+            } else {
+                photo.style.display = 'none';
+            }
+
+            counterBox.addEventListener('click', function() {
+                photos.forEach((p, i) => {
+                    p.style.display = i === index ? 'block' : 'none';
+                    counterContainer.children[i].classList.remove('active'); // Remove active class from all
+                });
+                counterBox.classList.add('active'); // Add active class to clicked one
+            });
+        });
+    });
+});
