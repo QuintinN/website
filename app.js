@@ -148,8 +148,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function toggleArrowVisibility() {
         const { scrollTop, clientHeight } = document.documentElement;
+        // This calculation checks if the user is at the bottom of the page.
+        const atBottom = scrollTop + clientHeight >= document.documentElement.scrollHeight - 1; // Adding a small threshold for rounding errors
+    
         upArrow.style.display = scrollTop > 20 ? "block" : "none";
-        downArrow.style.display = scrollTop + clientHeight < document.documentElement.scrollHeight ? "block" : "none";
+        // Show the down arrow unless the user is at the very bottom of the page.
+        downArrow.style.display = atBottom ? "none" : "block";
     }
 
     window.addEventListener('scroll', toggleArrowVisibility);
@@ -184,17 +188,31 @@ document.addEventListener('DOMContentLoaded', function() {
     downArrow.addEventListener('click', function(e) {
         e.preventDefault();
         const currentScroll = window.pageYOffset;
-        let targetSection = null;
-
-        Array.from(sections).some(section => {
-            if (section.offsetTop > currentScroll + window.innerHeight / 2) {
-                targetSection = section;
-                return true; // Break the loop
-            }
+        
+        // Determine if the current section is 'Projects'
+        let isProjectsActive = Array.from(sections).some(section => {
+            const sectionTop = section.offsetTop;
+            const sectionBottom = sectionTop + section.offsetHeight;
+            return section.id === 'projects' && currentScroll >= sectionTop && currentScroll < sectionBottom;
         });
 
-        if (targetSection) {
-            window.scrollTo({ top: targetSection.offsetTop, behavior: 'smooth' });
+        // If 'Projects' section is currently active, scroll to the bottom of the page
+        if (isProjectsActive) {
+            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+        } else {
+            // If not in 'Projects', find the next section to scroll to normally
+            let targetSection = null;
+
+            Array.from(sections).some(section => {
+                if (section.offsetTop > currentScroll + window.innerHeight / 2) {
+                    targetSection = section;
+                    return true; // Break the loop
+                }
+            });
+
+            if (targetSection) {
+                window.scrollTo({ top: targetSection.offsetTop, behavior: 'smooth' });
+            }
         }
     });
 
@@ -260,3 +278,47 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.project-goals li').forEach(function(li) {
+        // Create the icon element
+        const icon = document.createElement('i');
+        icon.className = 'fas fa-chevron-right';
+        icon.style.color = '#12d640';
+        icon.style.marginRight = '8px'; // Adds spacing between the icon and text
+
+        // Insert the icon before the list item's content
+        li.prepend(icon);
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.project-title-link').forEach(function(link) {
+        link.setAttribute('target', '_blank');
+    });
+});
+
+document.addEventListener('scroll', function() {
+    const scrollHeight = document.documentElement.scrollHeight;
+    const scrollPosition = window.innerHeight + window.pageYOffset;
+    const bottomThreshold = 10; // Adjust based on when you want the animation to trigger
+
+    const adam = document.querySelector('.photoAdam');
+    const god = document.querySelector('.photoGod');
+
+    // Check if we're near the bottom of the page
+    if (scrollHeight - scrollPosition <= bottomThreshold) {
+        // Remove the classes to reset animation
+        adam.classList.remove('animateAdam');
+        god.classList.remove('animateGod');
+
+        // Trigger reflow to reset animation
+        void adam.offsetWidth;
+        void god.offsetWidth;
+
+        // Re-add the classes to start animation
+        adam.classList.add('animateAdam');
+        god.classList.add('animateGod');
+    }
+});
+

@@ -1,6 +1,10 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
+body, button, input, textarea {
+    font-family: 'Roboto', sans-serif;
+}
+
 body {
     font-family: 'Roboto', sans-serif;
     color: white;
@@ -24,8 +28,10 @@ body, html {
     align-items: center;
     justify-content: center;
     background-color: black; /* Ensuring black background for contrast */
+    /*
     border-right: dashed red; 
     border-left: dashed red; 
+    */
 }
   
 a {
@@ -101,14 +107,16 @@ footer {
 #about,
 #skills,
 #experience,
-#projects {
+#projects,
+#contact {
     width: 970px; 
 }
 
 .about-title, 
 .experience-title, 
 .skills-title,
-.projects-title {
+.projects-title,
+.contact-title {
     display: inline-block;
     position: relative; /* Keeps the pseudo-element within the title's bounds */
     color: #12d640;
@@ -119,7 +127,8 @@ footer {
 .about-title::after, 
 .experience-title::after,
 .skills-title::after,
-.projects-title::after {
+.projects-title::after,
+.contact-title::after {
     content: '';
     position: absolute;
     top: 100%; /* Places the line directly below the text */
@@ -492,15 +501,30 @@ span {
 }
 
 .project-card {
+    width: 100%; /* Use 100% of the container's width for responsiveness */
+    max-width: 800px; /* Example to make the width larger, adjust as needed */
+    min-height: 400px; /* Example minimum height, adjust as needed */
+    box-sizing: border-box;
+    padding: 20px;
+    margin-bottom: 20px; /* Space between project cards */
     display: flex;
-    align-items: flex-start; /* Align items to the top */
-    gap: 20px; /* Space between project-info and photo-stack-container */
+    align-items: flex-start;
+    gap: 20px;
+    justify-content: space-between; /* Adjusts spacing between children */
+    /* Other styles remain unchanged */
+}
+
+@media (max-width: 768px) { /* Adjusts for tablets and smaller devices */
+    .project-card {
+        flex-direction: column; /* Stacks project-info and photo-stack-container vertically on smaller screens */
+        width: 100%; /* Takes full width of its container */
+    }
 }
 
 .photo-stack, .project-image {
     flex-shrink: 0; /* Prevents the photo stack or image from shrinking */
     height: 300px; 
-    width: 300px; 
+    width: 400px; 
     /* Set a specific width and height for your images/stack if necessary */
 }
 
@@ -514,15 +538,17 @@ span {
 }
 
 /* Additional styling for project-date and project-description */
-.project-date, .project-description {
+.project-title,
+.project-date, 
+.project-goal,
+.project-description {
     margin: 0; /* Removes default margin */
     /* Add any other desired styles */
 }
 
 .mbtproj {
     height: 300px; 
-    width: 300px; 
-    border-radius: 10%;
+    width: 400px; 
 }
 
 .photo-stack-container {
@@ -539,16 +565,19 @@ span {
 }
 
 .photo-stack-counter div {
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
     margin: 0 5px;
     background-color: white;
     color: black;
-    text-align: center;
+    align-items: center;
     line-height: 20px;
     cursor: pointer;
     border-radius: 10%; 
     line-height: 20px; 
+    display: flex;
+    justify-content: center; 
+    font-size: 20px; 
 }
 
 .photo-stack-counter div.active {
@@ -563,8 +592,159 @@ span {
     text-align: center; 
 }
 
+.project-description {
+    flex-grow: 1; /* Allows the description to expand and take up available space */
+    width: 100%; /* Ensures it spans the full width of its container */
+}
+
 /* Additional styles to ensure project date and description are properly aligned */
 .project-date, .project-description {
     margin: 0;
     padding: 5px; /* Add padding for better readability */
 }
+
+.project-info ul, .project-info .project-goals {
+    list-style-type: none; /* Removes default list styling */
+    padding: 0;
+    margin: 0;
+    text-align: left; 
+}
+
+.project-info ul li, .project-info .project-goals li {
+    padding-left: 1em; /* Or any other styling you want to apply uniformly */
+    text-indent: -1em;
+}
+
+.project-info {
+    max-width: 40%; /* Adjust the width as per your layout needs */
+    margin-right: 20px; /* Ensures some space between project-info and photo-stack */
+}
+
+.project-title, .project-date, .project-description {
+    margin-bottom: 10px; /* Adds some space between the title, date, and description */
+    color: white; /* Dark text for better readability */
+    font-family: Roboto, sans-serif; /* Example font */
+}
+
+.project-title {
+    font-size: 24px; /* Larger font size for project titles */
+    font-weight: bold; /* Makes the title stand out */
+}
+
+.project-date {
+    font-size: 18px; /* Slightly smaller font size for dates */
+    color: white; /* Lighter text color for contrast */
+}
+
+.project-description {
+    font-size: 30px; /* Standard text size for descriptions */
+}
+
+.project-goals ul {
+    list-style-type: none; /* Removes the default list bullet */
+    padding-left: 0; /* Aligns content with the edge of the project-info */
+}
+
+.project-goals li {
+    font-size: 20px; /* Ensures consistent font size with the project-description */
+    margin-bottom: 8px; /* Adds some space between each goal for better readability */
+    line-height: 1.5; /* Improves readability by increasing line height */
+    display: flex; /* Enables flex layout for icons and text alignment */
+    text-align: left; 
+}
+
+.project-goals i.fas {
+    margin-right: 800px; /* Ensures space between the icon and text */
+    color: #12d640; /* Applies specified green color to the icon */
+}
+
+i.fas.fa-chevron-right {
+    min-width: 20px; /* Ensures a consistent space for the icon */
+    text-align: center; /* Centers the icon within its allocated space */
+}
+
+.project-title-link {
+    text-decoration: none; /* Removes underline */
+    color: black; /* Initial color, adjust as needed */
+}
+
+.project-title-link:hover, .project-title-link:focus {
+    color: #12d640; /* Green color on hover/focus */
+    text-decoration: underline; /* Adds underline on hover/focus */
+}
+
+/* Assuming .project-title inherits color from .project-title-link */
+.project-title-link:hover .project-title, .project-title-link:focus .project-title {
+    color: #12d640; /* Ensures the text itself also turns green */
+}
+
+.project-goals ul li .text-padding {
+    margin-left: 8px; /* Adjust the spacing as needed */
+}
+
+.closing-paragraph {
+    text-align: center;
+    font-size: 20px; /* Adjust size as needed */
+    margin-left: 20%; 
+    margin-right: 20%; 
+}
+
+.image-wrapper {
+    position: relative; /* Allows absolute positioning relative to this wrapper */
+    width: 100%; /* Adjust as needed */
+    height: auto; /* Adjust based on the content */
+    display: flex; /* Use flexbox to help with positioning */
+    justify-content: center; /* Center the images horizontally */
+    align-items: center; /* Align the images vertically */
+}
+
+.photoAdam, .photoGod {
+    position: absolute;
+    opacity: 0; /* Start fully transparent */
+}
+
+/* Adam's arm animation */
+@keyframes fadeInMoveRight {
+    from {
+        opacity: 0;
+        transform: translateX(-50px); /* Start from left */
+    }
+    to {
+        opacity: 1;
+        transform: translateX(225%); /* End at original position */
+    }
+}
+
+/* God's arm animation */
+@keyframes fadeInMoveLeft {
+    from {
+        opacity: 0;
+        transform: translateX(100%); /* Start from right */
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-185%); /* End at original position */
+
+    }
+}
+
+.photoAdam {
+    animation: fadeInMoveRight 10s forwards; /* Apply Adam's animation */
+    position: relative; /* Adjust as needed for positioning */
+    left: -80%; /* Adjust starting position if necessary */
+    height: 40%; 
+    width: 40%; 
+    bottom: 0; 
+}
+
+.photoGod {
+    animation: fadeInMoveLeft 10s forwards; /* Apply God's animation */
+    position: relative; /* Adjust as needed for positioning */
+    right: -90%; /* Adjust starting position if necessary */
+    height: 50%; 
+    width: 50%; 
+    transform: translateY(10px); 
+    margin-bottom: 10%; 
+}
+
+
