@@ -298,27 +298,40 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-document.addEventListener('scroll', function() {
-    const scrollHeight = document.documentElement.scrollHeight;
-    const scrollPosition = window.innerHeight + window.pageYOffset;
-    const bottomThreshold = 10; // Adjust based on when you want the animation to trigger
+let hasLeftContact = false;
 
+function isElementInViewport(el) {
+    const rect = el.getBoundingClientRect();
+    return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+}
+
+document.addEventListener('scroll', () => {
+    const contactSection = document.getElementById('contact');
     const adam = document.querySelector('.photoAdam');
     const god = document.querySelector('.photoGod');
+    
+    // Check if the contact section is in the viewport
+    if (isElementInViewport(contactSection) && hasLeftContact) {
+        // User has scrolled back to the contact section, restart the animation
+        adam.style.animation = 'none';
+        god.style.animation = 'none';
+        
+        setTimeout(() => {
+            adam.style.animation = '';
+            god.style.animation = '';
+            adam.classList.add('animateAdam');
+            god.classList.add('animateGod');
+        }, 0);
 
-    // Check if we're near the bottom of the page
-    if (scrollHeight - scrollPosition <= bottomThreshold) {
-        // Remove the classes to reset animation
-        adam.classList.remove('animateAdam');
-        god.classList.remove('animateGod');
-
-        // Trigger reflow to reset animation
-        void adam.offsetWidth;
-        void god.offsetWidth;
-
-        // Re-add the classes to start animation
-        adam.classList.add('animateAdam');
-        god.classList.add('animateGod');
+        hasLeftContact = false; // Reset flag
+    } else if (!isElementInViewport(contactSection)) {
+        hasLeftContact = true; // User has left the contact section, allow for re-triggering
     }
 });
+
 
