@@ -341,4 +341,35 @@ document.addEventListener('scroll', () => {
     god.addEventListener('animationend', scrollToTop);
 });
 
+function smoothScrollToTop(duration) {
+    const start = window.pageYOffset;
+    const startTime = 'now' in window.performance ? performance.now() : new Date().getTime();
+  
+    const animateScroll = (currentTime) => {
+        const timeElapsed = currentTime - startTime;
+        const progress = Math.min(timeElapsed / duration, 1);
+  
+        // Calculate the current position using an easing function
+        const easeInOutQuad = (t) => t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+        const currentPosition = start + (0 - start) * easeInOutQuad(progress);
+  
+        window.scrollTo(0, currentPosition);
+  
+        if (timeElapsed < duration) {
+            requestAnimationFrame(animateScroll);
+        }
+    };
+  
+    requestAnimationFrame(animateScroll);
+}
+
+const contactAnimationEndHandler = () => {
+    // Assuming this is called when your contact animation ends
+    smoothScrollToTop(2000); // Smoothly scroll back to the top over 2000 milliseconds (2 seconds)
+};
+
+// Example of attaching the handler to your animation elements
+document.querySelector('.photoAdam').addEventListener('animationend', contactAnimationEndHandler);
+document.querySelector('.photoGod').addEventListener('animationend', contactAnimationEndHandler);
+
 
