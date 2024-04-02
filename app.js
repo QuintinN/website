@@ -285,8 +285,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const icon = document.createElement('i');
         icon.className = 'fas fa-chevron-right';
         icon.style.color = '#12d640';
-        icon.style.marginRight = '8px'; // Adds spacing between the icon and text
-
+        icon.style.marginRight = '18px'; // Adds spacing between the icon and text
+        icon.style.marginTop = '4px';
         // Insert the icon before the list item's content
         li.prepend(icon);
     });
@@ -315,6 +315,10 @@ document.addEventListener('scroll', () => {
     const adam = document.querySelector('.photoAdam');
     const god = document.querySelector('.photoGod');
     
+    // Function to handle scrolling to the top
+    function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
     // Check if the contact section is in the viewport
     if (isElementInViewport(contactSection) && hasLeftContact) {
         // User has scrolled back to the contact section, restart the animation
@@ -332,6 +336,9 @@ document.addEventListener('scroll', () => {
     } else if (!isElementInViewport(contactSection)) {
         hasLeftContact = true; // User has left the contact section, allow for re-triggering
     }
+
+    adam.addEventListener('animationend', scrollToTop);
+    god.addEventListener('animationend', scrollToTop);
 });
 
 
