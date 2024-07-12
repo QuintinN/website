@@ -128,8 +128,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Coin sources
-    const bitcoinSrc = "https://giphy.com/embed/NJ2hpQBcgiOz6cbal6";
-    const ethereumSrc = "https://giphy.com/embed/WZbiJmZsWiDXDVjZCz";
+    const bitcoinSrc = "https://giphy.com/embed/26jv2rdEfXnRugnsWb";
+    const ethereumSrc = "https://giphy.com/embed/DdpmhAQpQZzwHSrQ3f";
 
     // Generate and animate a random number of coins for each type (ensuring even quantity)
     const totalCoins = 50; // Total number of coins
